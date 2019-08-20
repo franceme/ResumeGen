@@ -74,3 +74,4 @@ tool | The latex flavor used for processing the template, ([Darwiin's](https://g
 
 1. Add more comments
 2. Create a temp directory for all of the processing files to be stored in.
+3. Create a way to upgrade the major version.
