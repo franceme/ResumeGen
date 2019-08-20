@@ -30,8 +30,7 @@ uninstall:
 	@sudo -v
 
 	@echo Uninstalling the packages
-	@pip3 uninstall mako
-	@sudo apt remove texlive-full texlive-luatex python3-pip python3 -y
+	@sudo apt remove texlive-full texlive-luatex python3-yaml python3-pip python3 -y
 
 	@echo Deleting the directories
 	@rm -r $(PDFCycle)
