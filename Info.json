@@ -1,0 +1,173 @@
+{
+	"experience": [
+		{
+			"name": "COMPANY TITLE A",
+			"URL": "URL.COM",
+			"title": "TITLE",
+			"addr": "SHORT ADDRESS",
+			"type": "TYPE (INTERNSHIP/FULL TIME)",
+			"Start": "05/2019",
+			"End": "07/2019",
+			"qualification": "TYPE (INTERNSHIP/FULL TIME)",
+			"TLDR": "EXPANDED TITLE",
+			"Learnt": [
+				"Skill B",
+				"Skill B"
+			],
+			"lines": [
+				"Line A",
+				"Line B"
+			],
+			"extraLines": [
+				"Extra Line A",
+				"Extra Line B"
+			]
+		},
+		{
+			"name": "COMPANY TITLE B",
+			"URL": "URL.COM",
+			"title": "TITLE",
+			"addr": "SHORT ADDRESS",
+			"type": "TYPE (INTERNSHIP/FULL TIME)",
+			"Start": "05/2019",
+			"End": "07/2019",
+			"qualification": "TYPE (INTERNSHIP/FULL TIME)",
+			"TLDR": "EXPANDED TITLE",
+			"Learnt": [
+				"Skill B",
+				"Skill B"
+			],
+			"lines": [
+				"Line A",
+				"Line B"
+			],
+			"extraLines": [
+				"Extra Line A",
+				"Extra Line B"
+			]
+		}
+	],
+	"education": [
+		{
+			"Dept": "COLLEGE DEPT",
+			"GPA": "#.##",
+			"Quote": "QUOTE HERE.",
+			"Grad": "April 2015",
+			"Start": "August 2011",
+			"Lvl": "UNDERGRAD",
+			"Major": "MAJOR",
+			"Minor": "MINOR",
+			"Qualification": "BS/MS/PhD",
+			"Name": "COLLEGE NAME",
+			"URL": "COLLEGE.COM",
+			"Description": [
+				"Line A",
+				"Line B",
+				"",
+				"Seperated Line C"
+			]
+		}
+	],
+	"groups": [
+		{
+			"End": "Now",
+			"Name": "GROUP a",
+			"Position": "Member",
+			"Start": "2018",
+			"URL": "GROUP.COM",
+			"Quote": "",
+			"lines": [
+				"Line A",
+				"Line B",
+				"",
+				"Seperated Line C"
+			]
+		},
+		{
+			"End": "2018",
+			"Name": "GROUP B",
+			"Position": "Member",
+			"Start": "2015",
+			"URL": "",
+			"Quote": "",
+			"lines": [
+				"Line A",
+				"Line B"
+			]
+		}
+	],
+	"projects": [
+		{
+			"name": "Project A",
+			"github": "GITHUBNAME/Project A",
+			"to": "Now",
+			"from": "2019",
+			"description": "Sample Description A Part 1.\n\nSample Description A Part 1.."
+		},
+		{
+			"name": "Project B",
+			"github": "GITHUBNAME/Project B",
+			"to": "2019",
+			"from": "2017",
+			"description": "Sample Description B"
+		}
+	],
+	"me": {
+		"addr": [
+			"ADDR Line 1",
+			"City",
+			"State Zip"
+		],
+		"Obj": "Sample Objective",
+		"OG_Obj": "Sample Objective",
+		"phone": "000-000-0000",
+		"curTitle": "TITLE",
+		"email": "EMAIL",
+		"fname": "FName",
+		"website": "WEBSITEURL",
+		"formal": "FName LName",
+		"headshot": "Headshot.png",
+		"lname": "LName",
+		"surname": "GITHUBNAME",
+		"keywords": "V0.10",
+		"githubURL": "github.com/GITHUBHAME",
+		"github": "GITHUBHAME"
+	},
+	"interests": [
+		"Interest A",
+		"Interest A"
+	],
+	"newTech": [
+		"Tech A",
+		"Tech A"
+	],
+	"skills": [
+		{
+			"name": "Java EE",
+			"numProj": 40,
+			"link": "openjdk.java.net",
+			"from": "2015",
+			"to": "Now",
+			"percent": 95,
+			"type": "lang"
+		},
+		{
+			"name": "Soap Webservices",
+			"numProj": 35,
+			"link": null,
+			"from": "2015",
+			"to": "Now",
+			"percent": 85,
+			"type": "projectType"
+		},
+		{
+			"name": "Maven",
+			"numProj": 30,
+			"link": "maven.apache.org",
+			"from": "2015",
+			"to": "Now",
+			"percent": 65,
+			"type": "framework"
+		}
+	]
+}

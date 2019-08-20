@@ -1,0 +1,16 @@
+##Line Endings changed to Linux Based
+# text eol=lf
+.gitattributes text eol=lf
+.gitignore text eol=lf
+*.properties text eol=lf
+.properties text eol=lf
+*.yml  text eol=lf
+*.md text eol=lf
+*.pxd text eol=lf
+*.py text eol=lf
+*.py3 text eol=lf
+*.pyw text eol=lf
+*.pyx text eol=lf
+*.json text eol=lf
+*.tex text eol=lf
+*.cls text eol=lf

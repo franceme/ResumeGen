@@ -1,0 +1,38 @@
+%%----------------------------------------------------------------------------------------
+%%Special commands for use with resume
+%%
+%%
+%%----------------------------------------------------------------------------------------
+%Used For Creating Colors
+\usepackage{xcolor}
+\usepackage{tabularx}
+\usepackage{calc}
+\usepackage[printwatermark]{xwatermark}
+
+%A stereotypical terminal color
+\definecolor{Terminal}{RGB}{65,255,0}
+\definecolor{ResumeColor}{RGB}{0,0,179} %HTML -> 0000B3
+%\definecolor{ResumeColor}{RGB}{26,26,117}
+
+\newcommand*{\draft}{%
+  \newlength\testh
+  \newlength\testw
+  \newcommand{\shorttextwatermark}{draft  \\\     }
+  \setlength{\testh}{\heightof{\shorttextwatermark}}
+  \setlength{\testw}{\widthof{\shorttextwatermark}}
+  \newwallpaper[allpages,tilexsize=8\testw,tileysize=8\testh,boxalign=left]{\shorttextwatermark}
+}
+
+\newcommand*{\pDraft}{
+	\newwatermark[allpages,color=red!50,angle=70,scale=6,xpos=-5,ypos=0]{draft}
+}
+\newcommand*{\shortDraft}[1]{
+	\newwatermark[allpages,color=red!50,angle=70,scale=6,xpos=-5,ypos=0]{draft\_{#1}}
+}
+
+\newcommand*{\makecvPlainfooter}{%
+  \fancyfoot{}
+  \fancyfoot[L]{}
+  \fancyfoot[C]{}
+  \fancyfoot[R]{}
+}

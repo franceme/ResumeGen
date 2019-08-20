@@ -1,0 +1,251 @@
+\documentclass[localFont,alternative]{yaac-another-awesome-cv}
+
+\usepackage{hyperref}
+\input{Resume_Commands}
+
+\hypersetup{
+	pdfauthor={ ${me['lname']}, ${me['fname']} },
+	pdftitle={ ${me['lname']}-Resume},
+	pdfsubject={ Future Work },
+	pdfkeywords={${me['keywords']}}
+}
+
+\name{}{
+	${me['formal']}
+}
+
+%%Enabling Control Flags
+<%
+	EnableURL = False
+	PaperName = True
+	Title = True
+	GroupGroups = True
+	Spacing = True
+	Draft = False
+
+	Addr = False
+	AllGroups = False
+	Methods = False
+%>
+
+%%Methods
+<%
+	def joyn(lyst):
+		print()
+		string = ''
+
+		for item in lyst:
+			string += item
+
+			if item != lyst[-1]:
+				string += ', '
+
+		return string
+
+	def skyllURLBase(skyll):
+		return str("\href{https://www.google.com/search?q=" + str(latexReplace(skyll)) + "}{" + str(skyll) + "}")
+
+	def skyllURL(url, skyll):
+		return str("\href{" + str(latexReplace(url)) + "}{" + str(skyll) + "}")
+
+	def skyllNonURL(skyll):
+		return str(skyll)
+
+	def gpURL(group):
+		return str(group['Position']) + " of \href{" + str(group['URL']) + "}{" + str(group['Name']) + "}"
+
+	def gp(group):
+		return str(group['Position']) + ' of ' +  str(group['Name'])
+
+	def listStringToString(string):
+		return str(string).replace('[','').replace(']','').replace('\'','')
+
+	def latexReplace(string):
+		return str(string).replace('+','\%2B').replace('#','\%23').replace(' ','\%20')
+
+	def group(groups, url=False):
+		output = ''
+		toString = gpURL if url else gp
+
+		for group in [x for x in groups if x['End'] == 'Now' or AllGroups]:
+			date = group['Start'] + str('-') + group['End']
+
+			output += "\keywordsentry{" + date + "}{" + toString({
+				'Position': group['Position'],
+				'URL': group['URL'],
+				'Name': group['Name']
+			}) + "}"
+
+		return output
+		
+
+	def groupedGroup(groups, url=False):
+		string, output, current, startYear = '', {}, '', '2018'
+		toString = gpURL if url else gp
+
+		for group in groups:
+
+			if group['Start'] == startYear and group['End'] == 'Now':
+
+				current += toString({
+					'Position':group['Position'],
+					'URL':group['URL'],
+					'Name':group['Name']
+				}) + ', '
+
+			elif AllGroups:
+				string = group['Start'] + str('-') + group['End']
+
+				if string not in output:
+					output[string] = []
+
+				output[string] += toString({
+					'Position': group['Position'],
+					'URL': group['URL'],
+					'Name': group['Name']
+				}) + ', '
+
+		string = "\keywordsentry{" + str(startYear) + "-Now}{" + str(current[:-2]) + "}"
+		for key, value in output.items():
+			string += "\n \keywordsentry{" + str(key) + "}{" + str(value[:-2]) + "}"
+
+		return string
+%>
+
+%if Draft:
+	\shortDraft{${me['keywords']}}
+%endif
+\tagline{}
+
+\socialinfo{
+	\smartphone{${me['phone']}}
+	%if EnableURL:
+		\email{${me['email']}}
+		\github{${me['github']}}
+		\website{${me['website']}}
+	%else:
+		\emailDull{${me['email']}}
+		\githubDull{${me['github']}}
+		\websiteDull{${me['website']}}
+	%endif
+}
+
+\begin{document}
+
+	%if Title:
+		\makecvheader{${me['curTitle']}}
+	%else:
+		\makecvheader
+	%endif
+	\makecvPlainfooter
+
+	%%Objective
+	%%Skills
+	\sectionTitle{Top Skills}{\faTasks}
+	\begin{keywords}
+		<%
+			SkillDict = { 'Programming': 'lang', 'Frameworks': 'framework', 'Projects': 'projectType'}
+			toSkyllString = skyllURLBase if EnableURL else skyllNonURL
+		%>
+		%for name, value in SkillDict.items():
+			\keywordsentry{${name}}{
+			<%
+				skillLyst = sorted([skill for skill in skills if skill['type'] == value], key = lambda x:x['percent'], reverse=True)
+			%>
+			%for program in skillLyst:
+				${toSkyllString(program['name'])}
+				%if program != skillLyst[-1]:
+					,
+				%endif
+			%endfor
+		}
+		%endfor
+		\end{keywords}
+	
+	%%Section: Edu
+	\sectionTitle{Education}{\faMortarBoard}
+	\begin{experiences}
+		%for col in education:
+				\shortexperience
+					{${col['Grad']}}
+					{${skyllURL(col['URL'],col['Name']) if EnableURL else skyllNonURL(col['Name'])}}
+					{${col['Lvl']}}{${col['Dept']}}
+					{${col['Start']}}
+					{
+						\begin{itemize}
+							\item GPA: ${col['GPA']}/4.0
+							\item Major: ${col['Major']}
+							%if 'Minor' in col:
+								\item Minor: ${col['Minor']}
+							%endif
+							%if 'Advisor' in col:
+								\item Advisor: ${col['Advisor']}
+							%endif
+							%if 'Papers' in col:
+								%if not EnableURL and not PaperName:
+									\item Papers: ${len(col['Papers'])}
+								% elif not EnableURL and PaperName:
+									\item Papers: 
+									%for paper in col['Papers']:
+										${paper['Shorty']}
+									%endfor
+								%else:
+									\item Papers:
+										%for paper in col['Papers']:
+											${skyllURL(paper['url'],paper['Shorty'])}
+										%endfor
+								%endif
+							%endif
+						\end{itemize}
+					}
+			%if Spacing and col != education[-1]:
+				\emptySeparator
+			%endif
+		%endfor
+	\end{experiences}
+
+	%%Section: Work Experience at the top
+	\sectionTitle{Professional Experience}{\faSuitcase}
+	\begin{experiences}
+		%%ForEach job
+		%for i, job in enumerate(experience):
+
+			%if Spacing and i > 0:
+				\emptySeparator
+			%endif
+
+			<%
+				skyllLyst = ''
+				for itrSkyll, learntSkyll in enumerate(job['Learnt']):
+					skyllLyst += toSkyllString(learntSkyll) + ', '
+			%>
+
+			%%If there are groupings
+			\experience
+			{${job['End']}}
+			{${job['title']}}
+			{${skyllURL(job['URL'],job['name']) if EnableURL else skyllNonURL(job['name'])}}
+			{${job['type']}}
+			{${job['Start']}}
+			{
+			\begin{itemize}
+				%for line in job['lines']:
+					\item ${line}.
+				%endfor
+			\end{itemize}
+			}
+			{
+			${skyllLyst[:-2]}
+			}
+
+		%%ForEach job
+		%endfor
+	\end{experiences}
+	
+	%%Section: Groups
+	\sectionTitle{Groups}{\faCommentsO}
+	\begin{keywords}
+		${groupedGroup(groups,EnableURL) if GroupGroups else group(groups,EnableURL)}
+	\end{keywords}
+
+\end{document}
