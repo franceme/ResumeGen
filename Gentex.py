@@ -1,5 +1,16 @@
 #!/usr/bin/env python3
 
+'''####################################
+#Reasons for imports
+	mako.template	: used for using the mako template language for the latex resume
+	json			: used for reading the Info.json files
+	yaml			: used for writing the website data files
+	os				: used for verifying and reading files
+	sys				: used for file paths
+	calendar		: used for the month/number conversion
+	re				: used for regular expressions
+'''####################################
+
 from mako.template import Template
 import json
 import yaml
@@ -8,6 +19,9 @@ import sys
 import calendar
 import re
 
+'''####################################
+#The main class that does the latex and handles the website conversions
+'''####################################
 class hold:
 	def __init__(self,foils):
 		self.info = json.load(open(foils[0],'r'))
@@ -22,6 +36,9 @@ class hold:
 		return json.dumps(self.info, default=lambda o: o.__dict__, sort_keys=True, indent=3)
 	def __print__(self):
 		print(str(self))
+	'''####################################
+	#The main method within the class that handles the conversions
+	'''####################################
 	def render(self):
 		if (self.latex):
 			newInfo = (Template(filename=self.template).render(**self.info))
@@ -40,6 +57,9 @@ class hold:
 					with open(os.path.join(self.outputDir, str(key)+'.yml'), 'w') as skillFile:
 						skillFile.write(yaml.dump(website.convertItem(key, value),default_flow_style=False))
 
+'''####################################
+#A utility class that contains the filters for the website yaml files
+'''####################################
 class website:
 	def extLines(skill):
 		lyst = skill['lines']
@@ -150,6 +170,9 @@ class website:
 			"description": website.concatList(edu['Description'])
 		}
 
+'''####################################
+#The method that checks for file validity
+'''####################################
 def fileCheck(file, ext, updateFile=True):
 		split=file.split('.')
 

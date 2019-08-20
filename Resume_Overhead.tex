@@ -30,6 +30,9 @@
 
 %%Methods
 <%
+	'''####################################
+	#concats each item in the lyst with a comma
+	'''####################################
 	def joyn(lyst):
 		print()
 		string = ''
@@ -42,27 +45,51 @@
 
 		return string
 
+	'''####################################
+	#returns a skill google search with a hyperlink
+	'''####################################
 	def skyllURLBase(skyll):
 		return str("\href{https://www.google.com/search?q=" + str(latexReplace(skyll)) + "}{" + str(skyll) + "}")
 
+	'''####################################
+	#returns a skill google search with a hyperlink and a different label
+	'''####################################
 	def skyllURL(url, skyll):
 		return str("\href{" + str(latexReplace(url)) + "}{" + str(skyll) + "}")
 
+	'''####################################
+	#returns the skill like normal
+	'''####################################
 	def skyllNonURL(skyll):
 		return str(skyll)
 
+	'''####################################
+	#returns a skill google search with a hyperlink and the group name
+	'''####################################
 	def gpURL(group):
 		return str(group['Position']) + " of \href{" + str(group['URL']) + "}{" + str(group['Name']) + "}"
-
+		
+	'''####################################
+	#returns a skill google search with the group name
+	'''####################################
 	def gp(group):
 		return str(group['Position']) + ' of ' +  str(group['Name'])
 
+	'''####################################
+	#returns a list into a string, and replaces the list.__str__ characters
+	'''####################################
 	def listStringToString(string):
 		return str(string).replace('[','').replace(']','').replace('\'','')
 
+	'''####################################
+	#replaces any special characters from a url with the latex friendly characters
+	'''####################################
 	def latexReplace(string):
 		return str(string).replace('+','\%2B').replace('#','\%23').replace(' ','\%20')
 
+	'''####################################
+	#A method that cycles though all of the active groups and returns a latex string of each group
+	'''####################################
 	def group(groups, url=False):
 		output = ''
 		toString = gpURL if url else gp
@@ -78,7 +105,9 @@
 
 		return output
 		
-
+	'''####################################
+	#A method that cycles though all of the active groups and returns a latex string of each group grouped by years
+	'''####################################
 	def groupedGroup(groups, url=False):
 		string, output, current, startYear = '', {}, '', '2018'
 		toString = gpURL if url else gp

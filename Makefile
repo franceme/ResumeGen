@@ -19,8 +19,7 @@ install:
 	@sudo -v
 
 	@echo Installing the packages
-	@sudo apt install texlive-full texlive-luatex python3 python3-pip -y
-	@pip3 install mako
+	@sudo apt install texlive-full texlive-luatex python3 python3-pip python3-yaml -y
 
 	@echo Making the directories
 	@mkdir -p $(PDFCycle)
