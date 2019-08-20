@@ -5,7 +5,7 @@
 ## ACKNOWLEDGMENTS
 
 This project uses the template created by [Christopher Roger (Darwiin)](https://github.com/darwiin/yaac-another-awesome-cv), or it can also be found on [overleaf](https://www.overleaf.com/latex/templates/awesome-source-cv/wrdjtkkytqcw).
-His project uses the [Latex Project Public License v1.3c](https://opensource.org/licenses/LPPL-1.3c), this project does not maintain the license since work has only been done around latex project.
+His project uses the [Latex Project Public License v1.3c](https://opensource.org/licenses/LPPL-1.3c), this project does not maintain the license since this work has only uses his latex project and doesn't claim ownership of the project.
 
 Slight changes have been made to the cls class, including duplicating social hyperlinks for enabling or disabling hyperlinks.
 
