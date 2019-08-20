@@ -66,7 +66,7 @@ Info | The json file with the main source of information
 Class | The class file used within the latex generation.
 PDFCycle | The location for the resume cuts.
 Website | The location for the yaml website files to be created in.
-tool | The latex flavor used for processing the template, ([Darwiin's](https://github.com/darwiin/yaac-another-awesome-cv) template uses lualatex).
+tool | The latex flavor used for processing the template, ([Darwiin's](https://github.com/darwiin/yaac-another-awesome-cv) template uses [lualatex](http://luatex.org/)).
 
 ---
 
